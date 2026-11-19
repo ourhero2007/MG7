@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bird : MonoBehaviour
@@ -25,7 +26,8 @@ public class Bird : MonoBehaviour
     //      coded! :)
     private void OnEnable()
     {
-        
+        _popUpTimeRemaining = _popUpTime;
+
     }
     // STEP 2 -----------------------------------------------------------------
 
@@ -34,7 +36,23 @@ public class Bird : MonoBehaviour
         // STEP 3 -------------------------------------------------------------
         // Update your timer, and if the bird should still be animating,
         //      move it upwards with Translate.
+        _popUpTimeRemaining -= Time.deltaTime;
 
+        if(_popUpTimeRemaining <= 0.0f)
+        {
+            _doPopUpAnimation = false;
+        }
+        else
+        {
+            _doPopUpAnimation = true;
+        }
+
+
+        if(_doPopUpAnimation == true)
+        {
+            transform.Translate(Vector3.up * _popUpSpeed * Time.deltaTime, relativeTo: Space.Self);
+            Debug.Log("we up!");
+        }
 
         // STEP 3 -------------------------------------------------------------
 
