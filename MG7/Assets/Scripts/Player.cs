@@ -97,8 +97,8 @@ public class Player : MonoBehaviour
 
         // STEP 7 -------------------------------------------------------------
         // Set the animation parameters to play the throwing animation.
-        
 
+        _animator.SetTrigger("throwing");
 
         // STEP 7 -------------------------------------------------------------
     }
@@ -127,6 +127,27 @@ public class Player : MonoBehaviour
         // Set the animation parameters to play the walking animation.
         // You might need the mouseY, mouseX, vertical, and horizontal variables
         //      that are above this step :)
+
+        if (mouseX != 0.0f)
+        {
+            _animator.SetBool("walking", true);
+        }
+        else if (mouseY != 0.0f)
+        { 
+            _animator.SetBool("walking", true);
+        }
+        else if (vertical != 0.0f)
+        {
+            _animator.SetBool("walking", true);
+        }
+        else if (horizontal != 0.0f)
+        {
+            _animator.SetBool("walking", true);
+        }
+        else 
+        {
+            _animator.SetBool("walking", false);
+        }
 
 
         // STEP 8 -------------------------------------------------------------
